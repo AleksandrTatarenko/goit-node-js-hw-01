@@ -6,12 +6,8 @@ const chalk = require('chalk');
 const contactsPath = path.join(__dirname, "./db/contacts.json");
 
 async function listContacts() {
-    const contacts = [];
     const data = JSON.parse(await fs.readFile(contactsPath, "utf-8"));
-    data.map((item) => {
-        contacts.push(`name: ${item.name}, email: ${item.email}, phone: ${item.phone}` );
-    });
-    console.log(contacts);
+    console.table(data);
 }
 
 async function getContactById(contactId) {
